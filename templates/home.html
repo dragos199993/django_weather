@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Weather app{% endblock %}
+
+{% block content %}
+    <form action="{% url 'index' %}" method="POST">
+        {% csrf_token %}
+        <label for="city">
+            City:
+            <input id="city" type="text" name="city"/>
+        </label>
+        <button>Search</button>
+    </form>
+    {% if city %}
+        You are searching for: {{ city }}
+        Coordinate: {{ coordinate }}
+        Temperature: {{ temp }}
+    {% endif %}
+{% endblock %}
